@@ -42,7 +42,7 @@ void loop() {
 }
 
 void isCarNear() {
-  const distance = ultrasonicSensor.Ranging(CM);
+  const int distance = ultrasonicSensor.Ranging(CM);
   return (distance < MINIMUM_DISTANCE_CAR_CM) ? true : false;
 }
 
