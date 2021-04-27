@@ -43,7 +43,7 @@ void loop() {
 
 void isCarNear() {
   const int distance = ultrasonicSensor.Ranging(CM);
-  return (distance < MINIMUM_DISTANCE_CAR_CM) ? true : false;
+  return (distance < MINIMUM_DISTANCE_CAR_CM);
 }
 
 void openGarageWithServo() {
@@ -65,5 +65,5 @@ void turnOnLedGarage() {
 }
 
 void turnOffLedGarage() {
-  digitalWrite(GARAGE_LED_PIN, LOW));
+  digitalWrite(GARAGE_LED_PIN, LOW);
 }
