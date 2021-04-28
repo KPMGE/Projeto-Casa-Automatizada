@@ -19,7 +19,7 @@ void loop() {
   }
 }
 
-void wasLaserInterrupted() {
+bool wasLaserInterrupted() {
   const int valueLDR = analogRead(LDR_PIN);
 
   if (valueLDR < 1000) {
