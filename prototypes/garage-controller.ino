@@ -7,16 +7,16 @@
 #include <Ultrasonic.h>
 
 // constants for servomotor
-#define SERVO_PIN 6 
+#define SERVO_PIN 6
 #define START_POSITION 0
 #define SERVO_MAX_ANGLE 60
-#define SERVO_SPEED 15  
+#define SERVO_SPEED 15
 // instance of Servo class
-Servo servomotor; 
+Servo servomotor;
 
 // contants for ultrassonic sensor
-#define TRIGGER_PIN 10 
-#define ECHO_PIN 9 
+#define TRIGGER_PIN 10
+#define ECHO_PIN 9
 #define MINIMUM_DISTANCE_CAR_CM 10
 // instance of Ultrassonic class
 Ultrasonic ultrasonicSensor(TRIGGER_PIN, ECHO_PIN);
@@ -24,24 +24,7 @@ Ultrasonic ultrasonicSensor(TRIGGER_PIN, ECHO_PIN);
 // contants for led
 #define GARAGE_LED_PIN 8
 
-void setup() {
-  servomotor.attach(SERVO_PIN);
-  servomotor.write(START_POSITION);
-}
-
-void loop() {
-  if (isCarNear()) {
-    turnOnLedGarage();
-    openGarageWithServo();
-
-    delay(2000);
-
-    closeGarageWithServo();
-    turnOffLedGarage();
-  }
-}
-
-void isCarNear() {
+int isCarNear() {
   const int distance = ultrasonicSensor.Ranging(CM);
   return (distance < MINIMUM_DISTANCE_CAR_CM) ? true : false;
 }
@@ -65,5 +48,22 @@ void turnOnLedGarage() {
 }
 
 void turnOffLedGarage() {
-  digitalWrite(GARAGE_LED_PIN, LOW));
+  digitalWrite(GARAGE_LED_PIN, LOW);
+}
+
+void setup() {
+  servomotor.attach(SERVO_PIN);
+  servomotor.write(START_POSITION);
+}
+
+void loop() {
+  if (isCarNear()) {
+    turnOnLedGarage();
+    openGarageWithServo();
+
+    delay(2000);
+
+    closeGarageWithServo();
+    turnOffLedGarage();
+  }
 }
