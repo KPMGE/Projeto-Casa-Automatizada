@@ -38,6 +38,8 @@ void loop() {
 
     closeGarageWithServo();
     turnOffLedGarage();
+
+    delay(2000);
   }
 }
 
