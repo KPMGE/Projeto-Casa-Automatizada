@@ -6,20 +6,23 @@
 
 #define START_POSITION 0
 
-// instance of servomotor
-Servo servo;
-
 // constructor
 GarageController::GarageController(int servoPin, int servoSpeed, int servoMaxAngle, int ledPin) {
 	pinMode(servoPin, OUTPUT);
 	pinMode(ledPin, OUTPUT);
-	servo.attach(servoPin);
-	servo.write(START_POSITION);
 
 	_servoPin = servoPin;
 	_servoSpeed = servoSpeed;
 	_servoMaxAngle = servoMaxAngle;
 	_ledPin = ledPin;
+}
+
+void GarageController::attach() {
+  _servo.attach(_servoPin);
+}
+
+void GarageController::init() {
+  _servo.write(START_POSITION);
 }
 
 void GarageController::openGarage() {
