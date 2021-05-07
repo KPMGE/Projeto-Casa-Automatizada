@@ -16,9 +16,9 @@ SecuritySystem::SecuritySystem(int ldrPin, int buzzerPin, int maxValueLdr) {
 }
 
 bool SecuritySystem::wasLaserInterrupted() {
-  const int valueLDR = analogRead(LDR_PIN);
+  const int valueLDR = analogRead(_ldrPin);
 
-  if (valueLDR < maxValueLdr) {
+  if (valueLDR < _maxValueLdr) {
     return true;
   }
   return false;
