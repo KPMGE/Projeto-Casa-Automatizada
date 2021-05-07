@@ -13,7 +13,8 @@
 GarageController controller(SERVO_PIN, SERVO_SPEED, SERVO_MAX_ANGLE, LED_PIN);
 
 void setup() {
-
+  controller.attach();
+  controller.init();
 }
 
 void loop() {
