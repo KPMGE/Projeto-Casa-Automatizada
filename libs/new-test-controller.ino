@@ -1,5 +1,7 @@
 // test sketch for garage controller
 
+#include <TestController.h>
+
 // garage led
 #define LED_PIN 10
 
