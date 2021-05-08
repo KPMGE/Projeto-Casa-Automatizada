@@ -1,3 +1,4 @@
+
 // test sketch for garage controller
 
 #include <GarageController.h>
@@ -18,9 +19,9 @@ void setup() {
 }
 
 void loop() {
-	controller.turnOnLed();
-	controller.openGarage();
-	delay(1000);
-	controller.closeGarage();
-	controller.turnOffLed();
+  controller.turnOnLed();
+  controller.openGarage();
+  delay(1000);
+  controller.closeGarage();
+  controller.turnOffLed();
 }
