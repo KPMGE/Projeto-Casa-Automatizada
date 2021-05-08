@@ -20,7 +20,7 @@ void setup() {
 void loop() {
   controller.turnOnLed();
   controller.openGarage();
-  delay(1000);
+  delay(5000);
   controller.closeGarage();
   controller.turnOffLed();
 }
