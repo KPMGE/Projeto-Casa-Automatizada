@@ -20,7 +20,9 @@ class TestController {
       _servoSpeed = servoSpeed;
     }
 
-		bool isCarNear();
+		bool isCarNear() {
+      return true;
+    }
 
 		void openGarage() {
       for (int i = 1; i < _servoMaxAngle; i++) {
