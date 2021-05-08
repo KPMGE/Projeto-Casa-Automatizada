@@ -1,6 +1,5 @@
 // Testing implementation of security system
-
-#include "SecuritySystem.h"
+#include <SecuritySystem.h>
 
 // LDR pin
 #define LDR_PIN A0
@@ -22,3 +21,4 @@ void loop() {
     security.triggerAlarm();
   }
 }
+

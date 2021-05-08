@@ -10,23 +10,20 @@ const int notes[] = { 524, 588, 660, 699, 785, 881, 989 }; // notes for buzzer
 SecuritySystem::SecuritySystem(int ldrPin, int buzzerPin, int maxValueLdr) {
   pinMode(buzzerPin, OUTPUT);
 
-  _ldrPin = ldrPin;
-  _buzzerPin = buzz;
-  _maxValueLdr = maxValueLdr;
+  this->ldrPin = ldrPin;
+  this->buzzerPin = buzzerPin;
+  this->maxValueLdr = maxValueLdr;
 }
 
 bool SecuritySystem::wasLaserInterrupted() {
-  const int valueLDR = analogRead(_ldrPin);
+  const int valueLDR = analogRead(this->ldrPin);
 
-  if (valueLDR < _maxValueLdr) {
-    return true;
-  }
-  return false;
+  return (valueLDR < this->maxValueLdr);
 }
 
 void SecuritySystem::triggerAlarm() {
   for (int i = 0; i < AMOUNT_NOTES; i++) {
-    tone(BUZZER_PIN, notes[i], DELAY_BUZZER);
+    tone(this->buzzerPin, notes[i], DELAY_BUZZER);
     delay(DELAY_BUZZER);
   }
   delay(DELAY_BUZZER);

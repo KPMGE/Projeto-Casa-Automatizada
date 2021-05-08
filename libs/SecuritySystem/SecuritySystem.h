@@ -7,7 +7,7 @@
 
 class SecuritySystem {
   private: 
-    int _ldrPin, _buzzerPin, _maxValueLdr;
+    int ldrPin, buzzerPin, maxValueLdr;
 
   public:
     SecuritySystem(int ldrPin, int buzzerPin, int maxValueLdr);
