@@ -3,7 +3,7 @@
 > Grupo: Kevin Carvalho de Jesus, Alvaro Davi Santos Alves, Bruno Silva 
 
 ### Idéia geral :boom:
-A idéia do deste projeto é criar uma miniatura de casa automatizada, com um sistema de segurança, detecção de nível de luminosidade
+A idéia deste projeto é criar uma miniatura de casa automatizada, com um sistema de segurança, detecção de nível de luminosidade
 para controle das luzes, alerta da possibilidade de chuva e um sistema automatizado de garagem.
 
 ### Sistema de segurança :hand:
@@ -21,8 +21,7 @@ Este sistema tem como objetivo detectar a umidade do ar, a fim de tentar ajudar 
 
 ### Garagem automatizada :red_car:
 Todos sabemos o quão inconveniente é, por vezes, chegar em casa extenuados ou em um dia de chuva e termos que abrir o portão
-de nossas casas. Este sistema veio revolucionar isto, quando é detectado que o carro do dono da casa se aproxima, o portão automatica
-mente se abre, então o usuário coloca-o dentro da garagem, e por fim, a mesma se fecha. Não é um sonho? :grin:
+de nossas casas. Este sistema veio revolucionar isto, quando é detectado que o carro do dono da casa se aproxima, o portão automaticamente se abre, então o usuário coloca-o dentro da garagem, e por fim, a mesma se fecha. Não é um sonho? :grin:
 
 
 ### Componentes usados
@@ -45,7 +44,7 @@ mente se abre, então o usuário coloca-o dentro da garagem, e por fim, a mesma 
 
 
 ### Esquemáticos
-Caso queira replicar este projeto, você pode clonar este repositório, mas precisará também de alguns esquemáticos, que lhe informarão como deve ser feita a pinagem para cada componente da casa, abaixo você pode encontrá-los. Divirta-se :)
+Caso queira replicar este projeto, você pode clonar este repositório, mas precisará também de alguns esquemáticos, que lhe informarão como deve ser feita a pinagem para cada componente da casa, abaixo você pode encontrá-los. Divirta-se :smile:
 
 <br>
 
