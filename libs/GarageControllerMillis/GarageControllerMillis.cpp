@@ -6,7 +6,6 @@
 GarageControllerMillis::GarageControllerMillis(int servoPin, int servoSpeed, int servoMaxAngle, int ledPin, int mindDistance) {
   pinMode(servoPin, OUTPUT);
   pinMode(ledPin, OUTPUT);
-  _servo.attach(servoPin);
 
   _servoPin = servoPin;
   _servoSpeed = servoSpeed;
@@ -29,6 +28,10 @@ void GarageControllerMillis::turnOnLed() {
 
 void GarageControllerMillis::turnOffLed() {
   digitalWrite(_ledPin, LOW);
+}
+
+void GarageControllerMillis::attachServo() {
+  _servo.attach(_servoPin);
 }
 
 bool GarageControllerMillis::isCarNear(int distance) {
