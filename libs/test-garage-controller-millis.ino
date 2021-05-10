@@ -23,12 +23,16 @@ unsigned long pingTimer;
 
 // minimum distance for car detection
 #define MINIMUM_DISTANCE_CAR 10
+#define BUTTON_GARAGE_PIN 2
 
 GarageControllerMillis controller(SERVO_PIN, SERVO_SPEED, SERVO_MAX_ANGLE, LED_PIN, MINIMUM_DISTANCE_CAR);
 
 int distanceCar = 1000;
+volatile bool buttonPressed = false; 
 
 void setup() {
+  pinMode(BUTTON_GARAGE_PIN, INPUT_PULLUP);
+  attachInterrupt(0, changeState, RISING);
   pingTimer = millis();
 }
 
@@ -37,6 +41,18 @@ void loop() {
   if (millis() >= pingTimer) {   
     pingTimer += pingSpeed;      
     sonar.ping_timer(updateDistance); 
+  }
+
+  if (buttonPressed) {
+    controller.turnOnLed();
+    controller.openGarage();
+
+    delay(3000);
+
+    controller.closeGarage();
+    controller.turnOffLed();
+
+    buttonPressed = false;
   }
 
   if (controller.isCarNear(distanceCar)) {
@@ -54,4 +70,8 @@ void updateDistance() {
   if (sonar.check_timer()) {
     distanceCar = sonar.ping_result / US_ROUNDTRIP_CM;
   }
+}
+
+void changeState() {
+  buttonPressed = !buttonPressed;
 }
