@@ -2,8 +2,6 @@
 #include "SaveEnergySystem.h"
 
 SaveEnergySystem::SaveEnergySystem(int ldrPin, int maxLightLevel, int *ledsPin, int amountLeds) {
-  pinMode(ldrPin, OUTPUT);
-
   for (int i = 0; i < amountLeds; i++) {
     pinMode(ledsPin[i], OUTPUT);
     _ledsPin[i] = ledsPin[i];
