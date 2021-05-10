@@ -18,6 +18,7 @@
 #define SERVO_SPEED 40
 #define SERVO_MAX_ANGLE 60
 #define MINIMUM_DISTANCE_CAR 10
+#define BUTTON_GARAGE_PIN 2
 
 
 // ----------- Save Energy System Constants -----------
@@ -39,7 +40,8 @@ unsigned long pingTimer;
 
 // current car's distance
 int distanceCar = 1000;
-
+// current state of the garage button
+volatile bool buttonPressed = false; 
 
 // ------------ Instances of the Classes ---------------
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_READING_DISTANCE);
@@ -49,6 +51,10 @@ SaveEnergySystem lights(LDR_SAVE_ENERGY_PIN, MAX_LIGHT_LEVEL, houseLedsPin, AMOU
 WeatherSystem weatherSystem(DHT_PIN, DHT_INTERRUPT);
 
 void setup() {
+  pinMode(BUTTON_GARAGE_PIN, INPUT_PULLUP);
+  attachInterrupt(0, changeState, RISING);
+  controller.attachServo();
+  controller.initServo();
   pingTimer = millis();
 }
 
@@ -57,6 +63,18 @@ void loop() {
   if (millis() >= pingTimer) {   
     pingTimer += pingSpeed;      
     sonar.ping_timer(updateDistance); 
+  }
+
+  if (buttonPressed) {
+    controller.turnOnLed();
+    controller.openGarage();
+
+    delay(3000);
+
+    controller.closeGarage();
+    controller.turnOffLed();
+
+    buttonPressed = false;
   }
 
   // if car is near, open the garage
@@ -82,4 +100,8 @@ void updateDistance() {
   if (sonar.check_timer()) {
     distanceCar = sonar.ping_result / US_ROUNDTRIP_CM;
   }
+}
+
+void changeState() {
+  buttonPressed = !buttonPressed;
 }
