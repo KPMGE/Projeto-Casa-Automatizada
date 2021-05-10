@@ -6,7 +6,7 @@
 
 class WeatherSystem {
   private:
-  int _dhtPin, _dhtInterrupt;
+  int _dhtPin, _dhtInterrupt, _ledPin;
   float _temperatureC, _humidity;
 
   void dht11_wrapper();    
@@ -14,7 +14,9 @@ class WeatherSystem {
   idDHT11 _dhtSensor;
 
   public:
-    WeatherSystem(int dhtPin, int dhtInterrupt);
+    WeatherSystem(int dhtPin, int dhtInterrupt, int ledPin);
+    void turnOnLed();
+    void turnOffLed();
     float getTemperature();
     float getHumidity();
 };

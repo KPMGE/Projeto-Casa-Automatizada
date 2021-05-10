@@ -1,8 +1,9 @@
 #include "WeatherSystem.h"
 
-WeatherSystem::WeatherSystem(int dhtPin, int dhtInterrupt) {
+WeatherSystem::WeatherSystem(int dhtPin, int dhtInterrupt, int ledPin) {
   _dhtPin = dhtPin;
   _dhtInterrupt = dhtInterrupt;
+	_ledPin = ledPin;
   Serial.begin(9600);
 }
 
@@ -71,6 +72,14 @@ void WeatherSystem::loopDHT() {
 
 		delay_leitura = millis();     
 	}
+}
+
+void WeatherSystem::turnOnLed() {
+	digitalWrite(_ledPin, HIGH);
+}
+
+void WeatherSystem::turnOffLed() {
+	digitalWrite(_ledPin, LOW);
 }
 
 float WeatherSystem::getTemperature() {
