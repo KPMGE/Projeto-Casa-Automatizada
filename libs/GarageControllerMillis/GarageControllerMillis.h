@@ -17,6 +17,7 @@ class GarageControllerMillis {
 		void turnOnLed();
 		void turnOffLed();
 		void attachServo();
+		void initServo();
 };
 
 #endif

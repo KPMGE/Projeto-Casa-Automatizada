@@ -34,8 +34,10 @@ void GarageControllerMillis::attachServo() {
   _servo.attach(_servoPin);
 }
 
+void GarageControllerMillis::initServo() {
+  _servo.write(START_POSITION);
+}
+
 bool GarageControllerMillis::isCarNear(int distance) {
   return (distance < _mindDistance);
 }
-
-
