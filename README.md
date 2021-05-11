@@ -67,7 +67,7 @@ feita a pinagem para cada componente da casa, abaixo você pode encontrá-los. D
 
 ### Primeiro Arduino
 
-Aqui, temos o esqumático para montar no primeiro arduino, este será responsável por gerenciar o sistema de garagem automatizada
+Aqui, temos o esquemático para montar o primeiro arduino, este será responsável por gerenciar o sistema de garagem automatizada
 
 ![fist arduino](https://github.com/KPMGE/Projeto-Casa-Automatizada/blob/kevin-branch/schematics/garage-controller.png?raw=true)
 
