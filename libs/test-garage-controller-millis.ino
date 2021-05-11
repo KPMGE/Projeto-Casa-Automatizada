@@ -65,6 +65,8 @@ void loop() {
 
     controller.closeGarage();
     controller.turnOffLed();
+
+    distanceCar = 1000;
   }
 }
 
