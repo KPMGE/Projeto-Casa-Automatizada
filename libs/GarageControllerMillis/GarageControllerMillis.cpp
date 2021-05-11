@@ -15,7 +15,7 @@ GarageControllerMillis::GarageControllerMillis(int servoPin, int servoSpeed, int
 }
 
 void GarageControllerMillis::openGarage() {
-  _servo.slowmove(_servoPin, _servoSpeed);
+  _servo.slowmove(_servoMaxAngle, _servoSpeed);
 }
 
 void GarageControllerMillis::closeGarage() {
