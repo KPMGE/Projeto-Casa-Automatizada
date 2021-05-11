@@ -1,4 +1,3 @@
-
 // garage controller for project - We need to detect a car and so,
 // open the garage and, at the same time, turns on a led
 // Now, using NewPing library
@@ -9,87 +8,124 @@
 #include <NewPing.h>
 
 // constants for servomotor
-#define SERVO_PIN 6 
-#define START_POSITION 0
-#define SERVO_MAX_ANGLE 60
-#define SERVO_SPEED 15  
+#define SERVO_PIN 6
+int start_position = 0;
+int servo_max_angle = 60;
+int servo_speed = 15;
 // instance of Servo class
-Servo servomotor; 
+Servo servomotor;
 
 
 // contants for ultrassonic sensor
-#define TRIGGER_PIN 10 
-#define ECHO_PIN 9 
-#define MAXIMUM_READING_DISTANCE_CM 30 
-#define MINIMUM_DISTANCE_CAR_CM 10
+#define TRIGGER_PIN 9
+#define ECHO_PIN 10
+int distanceSensor = 200;
+float max_reading_dist_cm = 30;
+float min_dist_car_cm = 10;
 // instance of Ultrassonic class
-NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAXIMUM_READING_DISTANCE_CM); 
+NewPing sonar(TRIGGER_PIN, ECHO_PIN, max_reading_dist_cm);
 
 // How frequently are we going to send out a ping (in milliseconds)
-unsigned int pingSpeed = 50; 
+unsigned int pingSpeed = 50;
 // Holds the next ping time.
-unsigned long pingTimer;     
+unsigned long pingTimer;
 
 
-// contants for led
-#define GARAGE_LED_PIN 8
+// contants for led and buttom
+#define GARAGE_LED_PIN 13
+#define BUTTOM_PIN 3
+bool pressedBtn = false;
 
-void setup() {
-  servomotor.attach(SERVO_PIN);
-  servomotor.write(START_POSITION);
-  pingTimer = millis();
+
+
+void setup()
+{
+	pinMode(GARAGE_LED_PIN, OUTPUT);
+	pinMode(BUTTOM_PIN, INPUT_PULLUP);
+	digitalWrite(12, HIGH);
+	attachInterrupt(digitalPinToInterrupt(BUTTOM_PIN), pressedButton, HIGH);
+	servomotor.attach(SERVO_PIN);
+	servomotor.write(start_position);
+	pingTimer = millis();
+	Serial.begin(9600);
 }
 
-void loop() {
-  // implementation for garageController
-  if (millis() >= pingTimer) {   
-    pingTimer += pingSpeed;      
-    sonar.ping_timer(isCarNear); 
-  }
+void loop()
+{
 
-  // we can do anything here, never mind!
+	// implementation for garageController
+	if (millis() >= pingTimer)
+	{
+		pingTimer += pingSpeed;
+		sonar.ping_timer(echoCheck);
+	}
+	if (isCarNear() || pressedBtn)
+	{
+		garageController();
+	}
 
+	// we can do anything here, never mind!
 }
 
-void openGarageWithServo() {
-  for (int position = 0; position < SERVO_MAX_ANGLE; position++) {
-    servomotor.write(position);
-    delay(SERVO_SPEED);
-  }
+void openGarageWithServo()
+{
+	for (int position = 0; position < servo_max_angle; position++)
+	{
+		servomotor.write(position);
+		delay(servo_speed);
+	}
 }
 
-void closeGarageWithServo() {
-  for (int position = SERVO_MAX_ANGLE; position >= 0; position--) {
-    servomotor.write(position);
-    delay(SERVO_SPEED);
-  }
+void closeGarageWithServo()
+{
+	for (int position = servo_max_angle; position >= 0; position--)
+	{
+		servomotor.write(position);
+		delay(servo_speed);
+	}
 }
 
-void turnOnLedGarage() {
-  digitalWrite(GARAGE_LED_PIN, HIGH);
+void turnOnLedGarage()
+{
+	digitalWrite(GARAGE_LED_PIN, HIGH);
 }
 
-void turnOffLedGarage() {
-  digitalWrite(GARAGE_LED_PIN, LOW);
+void turnOffLedGarage()
+{
+	digitalWrite(GARAGE_LED_PIN, LOW);
 }
 
-void isCarNear() {
-  if (sonar.check_timer()) { 
-    const int distance = sonar.ping_result / US_ROUNDTRIP_CM;
-    garageController(distance);
-  }
+void echoCheck()
+{
+	if (sonar.check_timer())
+	{
+		distanceSensor = sonar.ping_result / US_ROUNDTRIP_CM;
+		Serial.print("Ping: ");
+		Serial.print(distanceSensor);
+		Serial.println("cm");
+	}
 }
 
-void garageController(int distance) {
-  if (distance < MINIMUM_DISTANCE_CAR_CM) {
-    turnOnLedGarage();
-    openGarageWithServo();
+bool isCarNear()
+{
+	return distanceSensor < min_dist_car_cm;
+}
 
-    delay(2000);
+void garageController()
+{
+	turnOnLedGarage();
+	openGarageWithServo();
 
-    closeGarageWithServo();
-    turnOffLedGarage();
+	delay(4000);
 
-    delay(2000);
-  }
+	closeGarageWithServo();
+	turnOffLedGarage();
+
+	distanceSensor = 200;
+	pressedBtn = false;
+}
+
+void pressedButton()
+{
+	pressedBtn = true;
 }
