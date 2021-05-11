@@ -64,26 +64,23 @@ Caso queira replicar este projeto, você pode clonar este repositório, mas prec
 
 <br>
 
-### LDR
+### Primeiro Arduino
 
-![LDR Sensor](https://github.com/KPMGE/Projeto-Casa-Automatizada/blob/kevin-branch/tests/img/LRD_test.jpeg?raw=true)
+Aqui, temos o esqumático para montar no primeiro arduino, este será responsável por gerenciar o sistema de garagem automatizada
 
-### Sensor Ultrasonico
+![fist arduino](https://github.com/KPMGE/Projeto-Casa-Automatizada/blob/kevin-branch/schematics/garage-controller.png?raw=true)
 
-![Ultrasonic Sensor](https://github.com/KPMGE/Projeto-Casa-Automatizada/blob/kevin-branch/tests/img/SensorUltrassonico_test.jpeg?raw=true)
+<br>
 
-### Sensor de Umidade
+### Segundo Arduino
 
-![Sensor umidade](https://github.com/KPMGE/Projeto-Casa-Automatizada/blob/kevin-branch/tests/img/SensorUmidade_test.jpg?raw=true)
+Este arduino será responsável pelo gerenciamento dos demais sistemas da casa, ou seja, os sistemas de economia de energia,
+segurança e clima.
 
-### Servomotor
+![second arduino](https://github.com/KPMGE/Projeto-Casa-Automatizada/blob/kevin-branch/schematics/second-arduino.png?raw=true)
 
-![Servomotor](https://github.com/KPMGE/Projeto-Casa-Automatizada/blob/kevin-branch/tests/img/ServoMotor_test.jpeg?raw=true)
+> OBS: Este esqumático está parcialmente incompleto, você deve ligar ainda a ele o sensor de umidade e temperatura, que se encontra abaixo
 
-### Sistema de Segurança
+### Sensor de Temperatura e Umidade
 
-![Security System](https://github.com/KPMGE/Projeto-Casa-Automatizada/blob/kevin-branch/tests/img/Light-Sensor.png?raw=true)
-
-### Garagem automatizada
-
-![garage](https://github.com/KPMGE/Projeto-Casa-Automatizada/blob/kevin-branch/tests/img/garage-controller.png?raw=true)
+![umidity-temperature-sensor](https://github.com/KPMGE/Projeto-Casa-Automatizada/blob/kevin-branch/tests/img/SensorUmidade_test.jpg?raw=true)
