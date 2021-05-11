@@ -53,7 +53,7 @@ de nossas casas. Este sistema veio revolucionar isto, quando é detectado que o 
 
 Quando um projeto se torna maior, com inúmeros componentes trabalhando juntos, utilizar um único arquivo para armazenar
 todo o código usado pode se tornar extremamente dispendioso, com o objetivo de mitigar este problema, implementamos pra você
-algumas bibliotecas que o ajudarão no processo de gerenciamento do projeto há bibliotecas para controle automatico da garagem,
+algumas bibliotecas que o ajudarão no processo de gerenciamento do projeto. Há bibliotecas para controle automatico da garagem,
 do sitema de segurança e do sistema de economia de energia! Você pode encontrá-las na pasta `libs` deste repositório. Para usálas é
 simplíssimo, basta mover a pasta com a lib dejesada para a o seu diretório `Aduino/libraries` e pronto! Basta importálas como qualquer
 outra biblioteca e começar a usar! :flushed:
