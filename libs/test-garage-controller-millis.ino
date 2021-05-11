@@ -32,7 +32,9 @@ volatile bool buttonPressed = false;
 
 void setup() {
   pinMode(BUTTON_GARAGE_PIN, INPUT_PULLUP);
-  attachInterrupt(0, changeState, RISING);
+  pinMode(4, OUTPUT);
+  digitalWrite(4, HIGH);
+  attachInterrupt(digitalPinToInterrupt(BUTTON_GARAGE_PIN), changeState, HIGH);
   controller.attachServo();
   controller.initServo();
   pingTimer = millis();

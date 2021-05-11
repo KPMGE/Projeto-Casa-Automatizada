@@ -7,7 +7,7 @@
 #define MAX_VALUE_LDR 1000
 
 // buzzer pin
-#define BUZZER_PIN 9 
+#define BUZZER_PIN 5
 
 // instance of security system
 SecuritySystem security(LDR_PIN, BUZZER_PIN, MAX_VALUE_LDR);
