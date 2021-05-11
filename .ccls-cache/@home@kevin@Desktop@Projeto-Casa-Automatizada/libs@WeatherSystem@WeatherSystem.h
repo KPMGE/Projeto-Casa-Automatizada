@@ -11,7 +11,7 @@ class WeatherSystem {
 
   void dht11_wrapper();    
   void loopDHT();     
-  idDHT11 _dhtSensor;
+  idDHT11 *_dhtSensor = new idDHT11(2, 11, dht11_wrapper);
 
   public:
     WeatherSystem(int dhtPin, int dhtInterrupt, int ledPin);

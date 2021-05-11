@@ -1,6 +1,8 @@
 #include "WeatherSystem.h"
 
 WeatherSystem::WeatherSystem(int dhtPin, int dhtInterrupt, int ledPin) {
+	_dhtSensor = new idDHT11(dhtPin, dhtInterrupt, dht11_wrapper);
+
   _dhtPin = dhtPin;
   _dhtInterrupt = dhtInterrupt;
 	_ledPin = ledPin;

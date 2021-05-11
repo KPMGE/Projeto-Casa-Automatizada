@@ -50,34 +50,28 @@ void loop()
 
 
 // callback para interrupcoes
-void dht11_wrapper()
-{
+void dht11_wrapper() {
 	dhtSensor.isrCallback();
 }
 
-void loopDHT()
-{
+void loopDHT() {
 	static int tempo_leitura = 1000; // 1 segundo
 	static unsigned long delay_leitura = millis() + tempo_leitura + 1;
 	static bool request = false;
 
-	if ((millis() - delay_leitura) > tempo_leitura)
-	{ 
-		if (! request)
-		{
+	if ((millis() - delay_leitura) > tempo_leitura) { 
+		if (! request) {
 			 dhtSensor.acquire(); 
 			 request = true;
 		}
 	}
 
-	if (request && ! dhtSensor.acquiring())
-	{
+	if (request && ! dhtSensor.acquiring()) {
 		request = false;
 
 		int result = dhtSensor.getStatus();
 
-		switch (result)
-		{
+		switch (result) {
 			case IDDHTLIB_OK: 
 				Serial.println("Leitura OK"); 
 				break;
@@ -110,20 +104,17 @@ void loopDHT()
 		float valor = 0.00;
 
 		valor = dhtSensor.getCelsius();
-		if (! isnan(valor))
-		{      
+		if (! isnan(valor)) {      
 			temperaturaC = valor;
 		}
 
 		valor = dhtSensor.getHumidity();
-		if (! isnan(valor))
-		{      
+		if (! isnan(valor)) {      
 			umidade = valor;
 		}  
 
 		valor = dhtSensor.getFahrenheit();
-		if (! isnan(valor))
-		{      
+		if (! isnan(valor)) {      
 			temperaturaF = valor;
 		}  
 
