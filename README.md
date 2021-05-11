@@ -55,7 +55,7 @@ Quando um projeto se torna maior, com inúmeros componentes trabalhando juntos, 
 todo o código usado pode se tornar extremamente dispendioso, com o objetivo de mitigar este problema, implementamos pra você
 algumas bibliotecas que o ajudarão no processo de gerenciamento do projeto. Há bibliotecas para controle automatico da garagem,
 do sitema de segurança e do sistema de economia de energia! Você pode encontrá-las na pasta `libs` deste repositório. Para usálas é
-simplíssimo, basta mover a pasta com a lib dejesada para a o seu diretório `Aduino/libraries` e pronto! Basta importálas como qualquer
+simplíssimo, basta mover a pasta com a lib dejesada para a o seu diretório `Aduino/libraries` e pronto! Basta importá-las como qualquer
 outra biblioteca e começar a usar! :flushed:
 
 ### Esquemáticos :bookmark_tabs:
