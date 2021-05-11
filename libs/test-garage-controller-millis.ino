@@ -4,9 +4,9 @@
 
 
 // distance sensor constants
-#define TRIGGER_PIN   10
-#define ECHO_PIN      9
-#define MAX_DISTANCE 40
+#define TRIGGER_PIN   9
+#define ECHO_PIN      10
+#define MAX_DISTANCE 30
 
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 
@@ -14,25 +14,27 @@ unsigned int pingSpeed = 50;
 unsigned long pingTimer;
 
 // garage led
-#define LED_PIN 10
+#define LED_PIN 13
 
 // constants for servo
-#define SERVO_PIN 8
+#define SERVO_PIN 6
 #define SERVO_SPEED 40
-#define SERVO_MAX_ANGLE 6
+#define SERVO_MAX_ANGLE 60
 
 // minimum distance for car detection
 #define MINIMUM_DISTANCE_CAR 10
-#define BUTTON_GARAGE_PIN 2
+#define BUTTON_GARAGE_PIN 3
 
 GarageControllerMillis controller(SERVO_PIN, SERVO_SPEED, SERVO_MAX_ANGLE, LED_PIN, MINIMUM_DISTANCE_CAR);
 
 int distanceCar = 1000;
-volatile bool buttonPressed = false; 
+volatile bool buttonPressed = false;
 
 void setup() {
   pinMode(BUTTON_GARAGE_PIN, INPUT_PULLUP);
-  attachInterrupt(0, changeState, RISING);
+  pinMode(4, OUTPUT);
+  digitalWrite(4, HIGH);
+  attachInterrupt(digitalPinToInterrupt(BUTTON_GARAGE_PIN), changeState, HIGH);
   controller.attachServo();
   controller.initServo();
   pingTimer = millis();
@@ -40,12 +42,12 @@ void setup() {
 
 void loop() {
 
-  if (millis() >= pingTimer) {   
-    pingTimer += pingSpeed;      
-    sonar.ping_timer(updateDistance); 
+  if (millis() >= pingTimer) {
+    pingTimer += pingSpeed;
+    sonar.ping_timer(updateDistance);
   }
 
-  if (buttonPressed) {
+  if (controller.isCarNear(distanceCar) || buttonPressed) {
     controller.turnOnLed();
     controller.openGarage();
 
@@ -53,9 +55,11 @@ void loop() {
 
     controller.closeGarage();
     controller.turnOffLed();
+    distanceCar = 1000;
 
     buttonPressed = false;
   }
+<<<<<<< HEAD
 
   if (controller.isCarNear(distanceCar)) {
     controller.turnOnLed();
@@ -68,6 +72,8 @@ void loop() {
 
     distanceCar = 1000;
   }
+=======
+>>>>>>> 1ae98f42ac471d9fa6b57aa094fc1c6527bc97e0
 }
 
 void updateDistance() {
