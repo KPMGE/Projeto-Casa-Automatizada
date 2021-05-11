@@ -8,7 +8,7 @@ WeatherSystem::WeatherSystem(int dhtPin, int dhtInterrupt, int ledPin) {
 }
 
 void WeatherSystem::dht11_wrapper() {
-  dhtSensor.isrCallback();
+  _dhtSensor.isrCallback();
 }
 
 void WeatherSystem::loopDHT() {
@@ -18,15 +18,15 @@ void WeatherSystem::loopDHT() {
 
 	if ((millis() - delay_leitura) > tempo_leitura) { 
 		if (! request) {
-			 dhtSensor.acquire(); 
+			 _dhtSensor.acquire(); 
 			 request = true;
 		}
 	}
 
-	if (request && ! dhtSensor.acquiring()) {
+	if (request && ! _dhtSensor.acquiring()) {
 		request = false;
 
-		int result = dhtSensor.getStatus();
+		int result = _dhtSensor.getStatus();
 
 		switch (result) {
 			case IDDHTLIB_OK: 
@@ -60,12 +60,12 @@ void WeatherSystem::loopDHT() {
 
 		float valor = 0.00;
 
-		valor = dhtSensor.getCelsius();
+		valor = _dhtSensor.getCelsius();
 		if (! isnan(valor)) {      
 			_temperatureC = valor;
 		}
 
-		valor = dhtSensor.getHumidity();
+		valor = _dhtSensor.getHumidity();
 		if (! isnan(valor)) {      
 			_humidity = valor;
 		}  
