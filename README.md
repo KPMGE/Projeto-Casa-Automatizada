@@ -36,13 +36,13 @@ de nossas casas. Este sistema veio revolucionar isto, quando é detectado que o 
 - 2 LDRs (e resistores de 11,2k O)
 - 1 Módulo Laser
 - 1 Buzzer
-- 1 Botão
 - 1 Sensor de Temperatura e Umidade do Ar (DHT11)
 - 1 Arduino
 - 1 Protoboard
 
 #### Garagem:
 
+- 1 Botão
 - 1 LED (e resistor de 330 O)
 - 1 Sensor Ultrassônico (HC-SR04)
 - 1 ServoMotor (DGServo 9g)
@@ -60,7 +60,8 @@ outra biblioteca e começar a usar! :flushed:
 
 ### Esquemáticos :bookmark_tabs:
 
-Caso queira replicar este projeto, você pode clonar este repositório, mas precisará também de alguns esquemáticos, que lhe informarão como deve ser feita a pinagem para cada componente da casa, abaixo você pode encontrá-los. Divirta-se :smile:
+Caso queira replicar este projeto, você pode clonar este repositório, mas precisará também de informações sobre como deve ser 
+feita a pinagem para cada componente da casa, abaixo você pode encontrá-los. Divirta-se :smile:
 
 <br>
 
@@ -79,7 +80,7 @@ segurança e clima.
 
 ![second arduino](https://github.com/KPMGE/Projeto-Casa-Automatizada/blob/kevin-branch/schematics/second-arduino.png?raw=true)
 
-> OBS: Este esqumático está parcialmente incompleto, você deve ligar ainda a ele o sensor de umidade e temperatura, que se encontra abaixo
+> OBS: Este esquemático está parcialmente incompleto, você deve ligar ainda a ele o sensor de umidade e temperatura, que se encontra abaixo
 
 ### Sensor de Temperatura e Umidade
 
