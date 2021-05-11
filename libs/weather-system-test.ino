@@ -2,7 +2,7 @@
 
 #define DHT_PIN 2 // pino do sensor DHT (Interrupt)
 #define DHT_INTERRUPT 11
-#define LED_WEATHER_PIN 9
+#define LED_WEATHER_PIN 7
 
 WeatherSystem weatherSystem(DHT_PIN, DHT_INTERRUPT, LED_WEATHER_PIN);
 
