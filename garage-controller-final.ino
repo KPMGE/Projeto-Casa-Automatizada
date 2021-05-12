@@ -14,7 +14,7 @@
 #define SERVO_PIN 6
 #define BUTTON_GARAGE_PIN 3
 #define SERVO_SPEED 40
-#define SERVO_MAX_ANGLE 60
+#define SERVO_MAX_ANGLE 180
 #define MINIMUM_DISTANCE_CAR 10
 
 // instances of all used classes 
