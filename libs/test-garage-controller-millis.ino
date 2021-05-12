@@ -19,7 +19,7 @@ unsigned long pingTimer;
 // constants for servo
 #define SERVO_PIN 6
 #define SERVO_SPEED 40
-#define SERVO_MAX_ANGLE 60
+#define SERVO_MAX_ANGLE 180
 
 // minimum distance for car detection
 #define MINIMUM_DISTANCE_CAR 10
