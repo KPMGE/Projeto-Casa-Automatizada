@@ -109,7 +109,7 @@ void loopDHT() {
 				break;
 		}
 
-		float valor = 0.00;
+		float value = 0.00;
 
 		value = dhtSensor.getCelsius();
 		if (! isnan(value)) {      
