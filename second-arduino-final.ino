@@ -18,7 +18,7 @@ SecuritySystem security(BUZZER_PIN, MAX_VALUE_LDR);
 // house leds 
 int ledsPin[] = { 8, 9, 10, 11 };
 // instance of class
-SaveEnergySystem lights(LDR_PIN_ENERGY, MAX_LIGHT_LEVEL, ledsPin, AMOUNT_LEDS);
+SaveEnergySystem lights(MAX_LIGHT_LEVEL, ledsPin, AMOUNT_LEDS);
 
 
 // constants for DHT sensor
