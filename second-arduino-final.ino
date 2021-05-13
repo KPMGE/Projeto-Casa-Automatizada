@@ -3,7 +3,7 @@
 #include <SecuritySystem.h>
 
 // constants for security system
-#define LDR_PIN_SECURITY A0
+#define LDR_PIN_SECURITY A1
 #define MAX_VALUE_LDR 1000
 #define BUZZER_PIN 5
 
@@ -12,7 +12,7 @@ SecuritySystem security(BUZZER_PIN, MAX_VALUE_LDR);
 
 
 // constants for save energy system
-#define LDR_PIN_ENERGY A1
+#define LDR_PIN_ENERGY A0
 #define MAX_LIGHT_LEVEL 200
 #define AMOUNT_LEDS 4
 // house leds 
