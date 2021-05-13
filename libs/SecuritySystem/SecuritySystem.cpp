@@ -20,8 +20,11 @@ bool SecuritySystem::wasLaserInterrupted(int value) {
 }
 
 void SecuritySystem::triggerAlarm() {
+  tone(this->buzzerPin, 660, DELAY_BUZZER);
+
+  /*
   for (int i = 0; i < AMOUNT_NOTES; i++) {
     tone(this->buzzerPin, notes[i], DELAY_BUZZER);
-    delay(2000);
   }
+  */
 }

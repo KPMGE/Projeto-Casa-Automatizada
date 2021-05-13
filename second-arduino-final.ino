@@ -46,18 +46,21 @@ void loop() {
 
 	// checking security system
 	valueSecurityLdr = analogRead(LDR_PIN_SECURITY);
+	Serial.println(valueSecurityLdr);
+
   if (security.wasLaserInterrupted(valueSecurityLdr)) {
     security.triggerAlarm();
 		valueSecurityLdr = 1000;
   }
 
+
   // update data
-	loopDHT(); 
+	//loopDHT(); 
 	// display data
-	Serial.print("Temperatura em Celcius: ");
-	Serial.println(temperatureC);
-	Serial.print("Umidade Relativa: ");
-	Serial.println(umidity);
+	//Serial.print("Temperatura em Celcius: ");
+	//Serial.println(temperatureC);
+	//Serial.print("Umidade Relativa: ");
+	//Serial.println(umidity);
 }
 
 // interruption callback
