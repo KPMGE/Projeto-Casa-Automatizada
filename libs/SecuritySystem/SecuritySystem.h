@@ -10,8 +10,8 @@ class SecuritySystem {
     int ldrPin, buzzerPin, maxValueLdr;
 
   public:
-    SecuritySystem(int ldrPin, int buzzerPin, int maxValueLdr);
-    bool wasLaserInterrupted();
+    SecuritySystem(int buzzerPin, int maxValueLdr);
+    bool wasLaserInterrupted(int value);
     void triggerAlarm();
 };
 

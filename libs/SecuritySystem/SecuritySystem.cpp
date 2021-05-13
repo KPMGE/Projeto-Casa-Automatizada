@@ -7,7 +7,7 @@
 #define DELAY_BUZZER 1000 
 const int notes[] = { 524, 588, 660, 699, 785, 881, 989 }; // notes for buzzer
 
-SecuritySystem::SecuritySystem(int ldrPin, int buzzerPin, int maxValueLdr) {
+SecuritySystem::SecuritySystem(int buzzerPin, int maxValueLdr) {
   pinMode(buzzerPin, OUTPUT);
 
   this->ldrPin = ldrPin;
@@ -15,19 +15,13 @@ SecuritySystem::SecuritySystem(int ldrPin, int buzzerPin, int maxValueLdr) {
   this->maxValueLdr = maxValueLdr;
 }
 
-bool SecuritySystem::wasLaserInterrupted() {
-  const int valueLDR = analogRead(this->ldrPin);
-
-  return (valueLDR < this->maxValueLdr);
+bool SecuritySystem::wasLaserInterrupted(int value) {
+  return (value < this->maxValueLdr);
 }
 
 void SecuritySystem::triggerAlarm() {
-  int now = millis();
   for (int i = 0; i < AMOUNT_NOTES; i++) {
     tone(this->buzzerPin, notes[i], DELAY_BUZZER);
-
-    while(millis() < now + DELAY_BUZZER) {
-      // does nothing
-    }
+    delay(2000);
   }
 }

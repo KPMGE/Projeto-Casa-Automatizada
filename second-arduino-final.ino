@@ -8,7 +8,7 @@
 #define BUZZER_PIN 5
 
 // instance of security system
-SecuritySystem security(LDR_PIN_SECURITY, BUZZER_PIN, MAX_VALUE_LDR);
+SecuritySystem security(BUZZER_PIN, MAX_VALUE_LDR);
 
 
 // constants for save energy system
@@ -34,6 +34,7 @@ void loopDHT();
 idDHT11 dhtSensor(DHT_PIN, DHT_INTERRUPT, dht11_wrapper); 
 float temperatureC, umidity;
 
+int valueSecurityLdr  = 1000;
 
 void setup() {
 	Serial.begin(9600); 
@@ -44,7 +45,8 @@ void loop() {
   lights.lightsAutomaticManager();
 
 	// checking security system
-  if (security.wasLaserInterrupted()) {
+	valueSecurityLdr = analogRead(LDR_PIN_SECURITY)
+  if (security.wasLaserInterrupted(valueSecurityLdr)) {
     security.triggerAlarm();
   }
 
