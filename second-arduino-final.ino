@@ -45,7 +45,7 @@ void loop() {
   lights.lightsAutomaticManager();
 
 	// checking security system
-	valueSecurityLdr = analogRead(LDR_PIN_SECURITY)
+	valueSecurityLdr = analogRead(LDR_PIN_SECURITY);
   if (security.wasLaserInterrupted(valueSecurityLdr)) {
     security.triggerAlarm();
 		valueSecurityLdr = 1000;
