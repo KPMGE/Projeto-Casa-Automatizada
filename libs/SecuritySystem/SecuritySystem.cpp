@@ -22,9 +22,12 @@ bool SecuritySystem::wasLaserInterrupted() {
 }
 
 void SecuritySystem::triggerAlarm() {
+  int now = millis();
   for (int i = 0; i < AMOUNT_NOTES; i++) {
     tone(this->buzzerPin, notes[i], DELAY_BUZZER);
-    delay(DELAY_BUZZER);
+
+    while(millis() < now + DELAY_BUZZER) {
+      // does nothing
+    }
   }
-  delay(DELAY_BUZZER);
 }
