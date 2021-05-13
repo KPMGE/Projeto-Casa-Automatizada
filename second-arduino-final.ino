@@ -34,7 +34,10 @@ void loopDHT();
 idDHT11 dhtSensor(DHT_PIN, DHT_INTERRUPT, dht11_wrapper); 
 float temperatureC, umidity;
 
+// value for security system
 int valueSecurityLdr  = 1000;
+// value for save energy system
+int valueSaveEnergySystem = 0;
 
 void setup() {
 	Serial.begin(9600); 
@@ -42,11 +45,12 @@ void setup() {
 
 void loop() {
 	// monitoring lights
-  lights.lightsAutomaticManager();
+	valueSaveEnergySystem = analogRead(LDR_PIN_ENERGY);
+	Serial.println(valueSaveEnergySystem);
+  lights.lightsAutomaticManager(valueSaveEnergySystem);
 
 	// checking security system
 	valueSecurityLdr = analogRead(LDR_PIN_SECURITY);
-	Serial.println(valueSecurityLdr);
 
   if (security.wasLaserInterrupted(valueSecurityLdr)) {
     security.triggerAlarm();

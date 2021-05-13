@@ -3,13 +3,13 @@
 
 class SaveEnergySystem {
   private:
-    int _ldrPin, _maxLightLevel, _amountLeds, _ledsPin[4];
+    int _maxLightLevel, _amountLeds, _ledsPin[4];
     void turnOffAllLeds();
     void turnOnAllLeds();
 
   public:
-    SaveEnergySystem(int ldrPin, int maxLightLevel, int *ledsPin, int amountLeds);
-    void lightsAutomaticManager();
+    SaveEnergySystem(int maxLightLevel, int *ledsPin, int amountLeds);
+    void lightsAutomaticManager(int value);
 };
 
 #endif

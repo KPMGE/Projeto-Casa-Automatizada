@@ -1,13 +1,12 @@
 #include "Arduino.h"
 #include "SaveEnergySystem.h"
 
-SaveEnergySystem::SaveEnergySystem(int ldrPin, int maxLightLevel, int *ledsPin, int amountLeds) {
+SaveEnergySystem::SaveEnergySystem(int maxLightLevel, int *ledsPin, int amountLeds) {
   for (int i = 0; i < amountLeds; i++) {
     pinMode(ledsPin[i], OUTPUT);
     _ledsPin[i] = ledsPin[i];
   }
 
-  _ldrPin = ldrPin;
   _maxLightLevel = maxLightLevel;
   _amountLeds = amountLeds;
 }
@@ -24,9 +23,7 @@ void SaveEnergySystem::turnOffAllLeds() {
   }
 }
 
-void SaveEnergySystem::lightsAutomaticManager() {
-  int value = analogRead(_ldrPin);
-
+void SaveEnergySystem::lightsAutomaticManager(int value) {
   if (value > _maxLightLevel) {
     turnOffAllLeds();
   } else {
