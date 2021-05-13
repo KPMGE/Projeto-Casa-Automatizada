@@ -48,6 +48,7 @@ void loop() {
 	valueSecurityLdr = analogRead(LDR_PIN_SECURITY)
   if (security.wasLaserInterrupted(valueSecurityLdr)) {
     security.triggerAlarm();
+		valueSecurityLdr = 1000;
   }
 
   // update data
