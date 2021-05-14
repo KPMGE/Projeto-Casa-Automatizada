@@ -7,6 +7,9 @@
 A idéia deste projeto é criar uma miniatura de casa automatizada, com um sistema de segurança, detecção de nível de luminosidade
 para controle das luzes, alerta da possibilidade de chuva e um sistema automatizado de garagem.
 
+### Video do Projeto
+[![projeto-video](https://i.ytimg.com/an_webp/4VBaKmSgmPU/mqdefault_6s.webp?du=3000&sqp=CPXk94QG&rs=AOn4CLD6WWaQHKgr37TtfXcr0a88qCevrw)](https://youtu.be/4VBaKmSgmPU)
+
 ### Sistema de segurança :hand:
 
 O sistema de segurança da casa basear-se-á em um laser, que ficará sempre ativo emitindo um raio que será lido por um
